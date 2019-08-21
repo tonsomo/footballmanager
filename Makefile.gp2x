@@ -1,0 +1,62 @@
+# Project: fm
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+OBJ  = gp2x/misc.o gp2x/drv_linux.o gp2x/eos.o gp2x/fm.o gp2x/font.o gp2x/init.o gp2x/io.o gp2x/main.o gp2x/match.o gp2x/matchday.o gp2x/menu.o
+LINKOBJ  = gp2x/misc.o gp2x/drv_linux.o gp2x/eos.o gp2x/fm.o gp2x/font.o gp2x/init.o gp2x/io.o gp2x/main.o gp2x/match.o gp2x/matchday.o gp2x/menu.o
+LIBS =  -L"C:/GP2XSDK/Tools/arm-gp2x-linux/lib" -lSDL_image -lSDL_ttf -lSDL_inifile -lSDL -lpng -ljpeg -lvorbisidec -lmad -lfreetype -lz -lunicodefont   
+INCS =  -I"C:/GP2XSDK/Tools/arm-gp2x-linux/include"  -I"C:/GP2XSDK/Tools/include"  -I"C:/GP2XSDK/Tools/include/SDL"  -I"D:/Downloads/GP2X/fm-0.99/fm-0.99" 
+CXXINCS =  -I"C:/GP2XSDK/Tools/include/c++/3.4.6/backward"  -I"C:/GP2XSDK/Tools/include/c++/3.4.6"  -I"C:/GP2XSDK/Tools/arm-gp2x-linux/include"  -I"C:/GP2XSDK/Tools/include"  -I"C:/GP2XSDK/Tools/include/SDL"  -I"D:/Downloads/GP2X/fm-0.99/fm-0.99" 
+BIN  = fm.gpe
+CXXFLAGS = $(CXXINCS)   -DGP2X
+CFLAGS = $(INCS) -D_REENTRANT   -DGP2X
+RM = rm -f
+MKDIR = cygwin-mkdir -p
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before fm.gpe all-after
+
+all-before:
+	$(MKDIR) "gp2x"
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $@ $(LIBS)
+
+gp2x/misc.o: misc.c
+	$(CPP) -c misc.c -o gp2x/misc.o $(CXXFLAGS)
+
+gp2x/drv_linux.o: drv_linux.c
+	$(CPP) -c drv_linux.c -o gp2x/drv_linux.o $(CXXFLAGS)
+
+gp2x/eos.o: eos.c
+	$(CPP) -c eos.c -o gp2x/eos.o $(CXXFLAGS)
+
+gp2x/fm.o: fm.c
+	$(CPP) -c fm.c -o gp2x/fm.o $(CXXFLAGS)
+
+gp2x/font.o: font.c
+	$(CPP) -c font.c -o gp2x/font.o $(CXXFLAGS)
+
+gp2x/init.o: init.c
+	$(CPP) -c init.c -o gp2x/init.o $(CXXFLAGS)
+
+gp2x/io.o: io.c
+	$(CPP) -c io.c -o gp2x/io.o $(CXXFLAGS)
+
+gp2x/main.o: main.c
+	$(CPP) -c main.c -o gp2x/main.o $(CXXFLAGS)
+
+gp2x/match.o: match.c
+	$(CPP) -c match.c -o gp2x/match.o $(CXXFLAGS)
+
+gp2x/matchday.o: matchday.c
+	$(CPP) -c matchday.c -o gp2x/matchday.o $(CXXFLAGS)
+
+gp2x/menu.o: menu.c
+	$(CPP) -c menu.c -o gp2x/menu.o $(CXXFLAGS)
